@@ -1,47 +1,41 @@
-## usersテーブル
-
+## messagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false, index: true|
-|email|string|null: false, unique: true|
-|password|string|null: false|
-
-### Association
-- has_many :messages
-- has_many :groups, through: :group_users
-- has_many :group_users
-
-## massagesテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|body|text||
-|image|image||
+|talk|text|
+|image|string||
 |user_id|references|null: false, foreign_key: true|
 |group_id|references|null: false, foreign_key: true|
-
 ### Association
-- belongs_to :user
 - belongs_to :group
+- belongs_to :user
+
+
+## usersテーブル
+|Column|Type|Option|
+|------|----|------|
+|name|string|null: false, unique: true, index: true|
+|email|string|null: false, unique: true|
+### Association
+- has_many :members
+- has_many :messages
+- has_many :groups, through: :members
+
 
 ## groupsテーブル
-
-|Column|Type|Options|
-|------|----|-------|
+|Column|Type|Option|
+|------|----|------|
 |name|string|null: false|
-
 ### Association
+- has_many :members
 - has_many :messages
-- has_many :users, through: :group_users
-- has_many :group_users
+- has_many :users, through: :members
 
-## group_users(中間)テーブル
 
+## membersテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true|
 |group_id|references|null: false, foreign_key: true|
-
 ### Association
-- belongs_to :group
 - belongs_to :user
+- belongs_to :group
