@@ -1,6 +1,7 @@
 $(function(){
   function buildHTML(message){
-   if (message.talk !== null && message.image.url !== null){
+    var talk = message.talk ? `${message.talk}` : ""
+    var image = message.image ? `<img class="lower-message__image" src=${message.image}>` : ""
 
     var html = `<div class="message" data-id="${message.id}">
     <div class="upper-message">
@@ -14,51 +15,14 @@ $(function(){
     <div class="lower-message">
       <p class="lower-message__talk">
        <div>
-        ${message.talk}
+        ${talk}
        </div>
       </p> 
     </div>  
-      <img class="lower-message__image">
-        ${message.image.url}
-      </div>`
+     ${image}
+    </div>`
     return html;
   }
-  if(message.talk  !== null && message.image.url == null){
-    var html = `<div class="message" data-id="${message.id}">
-    <div class="upper-message">
-      <p class="upper-message__user-name">
-        ${message.name}
-      </p>
-      <p class="upper-message__date">
-        ${message.date}
-      </p>
-    </div>
-    <div class="lower-message">
-      <p class="lower-message__talk">
-       <div>
-        ${message.talk}
-       </div>
-      </p> 
-    </div> `
-    return html;
-  }
-  if (message.talk == null && message.image.url !== null){
-
-    var html = `<div class="message" data-id="${message.id}">
-    <div class="upper-message">
-      <p class="upper-message__user-name">
-        ${message.name}
-      </p>
-      <p class="upper-message__date">
-        ${message.date}
-      </p>
-    </div>
-      <img class="lower-message__image">
-        ${message.image.url}
-      </div>`
-    return html;
-  }
-}
   $('#new_message').on('submit',function(e){
     e.preventDefault();
     var formData = new FormData(this);
@@ -82,6 +46,7 @@ $(function(){
    })
   .always(function(){
     $('.form__submit').prop('disabled', false);
+
  })
 })
 });
