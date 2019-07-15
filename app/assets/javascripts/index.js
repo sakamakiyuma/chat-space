@@ -40,10 +40,10 @@ $(document).on('turbolinks:load', function() {
           data: { keyword: input },
           dataType: 'json'
         })
-           
+
         .done(function(users) {
           $("#user_search_result").empty();
-           if(users.length !== 0) {
+          if(users.length !== 0) {
             users.forEach(function(user){
               appendUser(user);
             });
@@ -57,14 +57,13 @@ $(document).on('turbolinks:load', function() {
       });
     });
       $(document).on("click", '.chat-group-user__btn--add', function() {
-        var name = $(this).attr("data-user-name");
-        var user_id = $(this).attr("data-user-id");
+        var name = $(this).data("user-name");
+        var user_id = $(this).data("user-id");
         $(this).parent().remove();
         appendMembers(name, user_id);
       });
 
       $(document).on("click", '.user_search_remove', function() {
-        console.log("test");
         $(this).parent().remove();
       });
   });  
