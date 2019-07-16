@@ -71,7 +71,7 @@ $(document).on('turbolinks:load', function(){
           $('.messages').animate({scrollTop: $('.message').last().offset().top + $('.messages').scrollTop()}, 1000, 'swing'); 
         })
         .fail(function(){
-          console.log('error');
+          alert('error');
         });
     }
     if (location.href.match(/groups\/\d+\/messages/)){
