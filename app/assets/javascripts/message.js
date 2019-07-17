@@ -44,7 +44,7 @@ $(document).on('turbolinks:load', function(){
         $('.messages').animate({scrollTop: $('.message').last().offset().top + $('.messages').scrollTop()}, 1000, 'swing'); 
       })
       .fail(function(){
-        alert('error');
+        alert('非同期処理失敗');
       })
     .always(function(){
       $('.form__submit').prop('disabled', false);
@@ -71,7 +71,7 @@ $(document).on('turbolinks:load', function(){
           $('.messages').animate({scrollTop: $('.message').last().offset().top + $('.messages').scrollTop()}, 1000, 'swing'); 
         })
         .fail(function(){
-          alert('error');
+          alert('自動更新失敗');
         });
     }
     if (location.href.match(/groups\/\d+\/messages/)){
