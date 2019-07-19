@@ -74,7 +74,7 @@ $(document).on('turbolinks:load', function(){
           alert('自動更新失敗');
         });
     }
-    if (location.href.match(/groups\/\d+\/messages/)){
+    if (location.href.match(/\/groups\/\d+\/messages/)){
         setInterval(reloadMessages, 5000);
     }
   });
