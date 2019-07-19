@@ -71,11 +71,11 @@ $(document).on('turbolinks:load', function(){
           $('.messages').animate({scrollTop: $('.message').last().offset().top + $('.messages').scrollTop()}, 1000, 'swing'); 
         })
         .fail(function(){
-          alert('自動更新失敗');
+          // alert('自動更新失敗');
         });
     }
-    if (location.href.match(/\/groups\/\d+\/messages/)){
-        setInterval(reloadMessages, 5000);
+    if (window.location.href.match(/\/groups\/\d+\/messages/)){
+      setInterval(reloadMessages, 5000);
     }
   });
 });
