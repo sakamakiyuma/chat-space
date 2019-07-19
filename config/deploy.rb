@@ -28,6 +28,7 @@ set :default_env, {
   AWS_SECRET_ACCESS_KEY: ENV["AWS_SECRET_ACCESS_KEY"]
 }
 
+set :linked_files, %w{ config/secrets.yml }
 # 元々記述されていた after 「'deploy:publishing', 'deploy:restart'」以下を削除して、次のように書き換え
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
